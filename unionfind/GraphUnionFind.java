@@ -1,6 +1,7 @@
 
 package com.dataStructure_algriothm.unionfind;
 // Java Program for union-find algorithm to detect cycle in a graph
+// use subsets if two vertices of one edge in same subset then there is a cycle
 import java.lang.*;
 
 class Graph
