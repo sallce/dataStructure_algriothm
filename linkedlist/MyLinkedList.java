@@ -13,6 +13,10 @@ public class MyLinkedList {
         }
     }
 
+    public void swapNodes(int x, int y) {
+
+    }
+
     // Insert a new Node at front of the list
     public void push(int new_data) {
         // 1 & 2: Allocate the Node & Put in the data
@@ -92,6 +96,45 @@ public class MyLinkedList {
 
     }
 
+    Node reverse(Node node) {
+        Node prev = null;
+        Node current = node;
+        Node next = null;
+
+        while (current != null) {
+            next = current.next;
+
+            current.next = prev;
+            prev = current;
+            current = next;
+        }
+
+        node = prev;
+
+        return node;
+    }
+
+    public Node reverseUtil(Node curr, Node prev) {
+        // If last node mark it head
+        if (curr.next == null) {
+            head = curr;
+
+            // Update next to prev node
+            curr.next = prev;
+            return null;
+        }
+
+        // Save curr->next node for recursive call
+        Node next1 = curr.next;
+
+        // and update next
+        curr.next = prev;
+
+        reverseUtil(next1, curr);
+
+        return head;
+    }
+
 
     public void printList() {
         Node tnode = head;
@@ -119,6 +162,12 @@ public class MyLinkedList {
         llist.deleteNode(4);
 
         llist.printList();
+
+        //reverse list
+        llist.head = llist.reverse(llist.head);
+        System.out.println("\nLinked List after reversing ");
+        llist.printList();
+
     }
 
 
